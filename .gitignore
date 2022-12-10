@@ -132,3 +132,6 @@ dmypy.json
 .idea/**/profiles_settings.xml
 .idea/**/Project_Default.xml
 .idea/vcs.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/Python-Advanced.iml
