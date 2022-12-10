@@ -130,4 +130,5 @@ dmypy.json
 
 # from me
 .idea/**/profiles_settings.xml
+.idea/**/Project_Default.xml
 .idea/vcs.xml
