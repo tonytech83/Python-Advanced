@@ -1,6 +1,6 @@
 n = int(input())
 
-# dict where to store uniq students names
+# dict where to store unique students names
 students_grades = {}
 
 for _ in range(n):

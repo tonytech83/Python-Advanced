@@ -1,10 +1,10 @@
 # take input in tuple
 numbers = tuple(float(x) for x in input().split())
 
-# crete dict to store uniq numbers
+# crete dict to store unique numbers
 uniq_numbers = {}
 
-# iterates trough numbers tuple and add uniq numbers in uniq_numbers dict
+# iterates trough numbers tuple and add unique numbers in uniq_numbers dict
 for num in numbers:
     if num not in uniq_numbers:
         uniq_numbers[num] = 0
