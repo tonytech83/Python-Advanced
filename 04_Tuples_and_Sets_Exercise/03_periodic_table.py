@@ -5,9 +5,8 @@ n = int(input())
 unique_elements = set()
 
 for _ in range(n):
-    line = input().split()
-    for element in line:
-        unique_elements.add(element)
+    current_set = set(input().split())
+    unique_elements = unique_elements.union(current_set)
 
 # prints elements in unique_elements set
 [print(element) for element in unique_elements]
