@@ -1,23 +1,14 @@
-from collections import deque
-
-
 def read_matrix():
     """
-    This func reads rows and columns from console, after that reads elements of columns
-    :returns: list of lists
+    This func reads rows and columns from console, after that reads elements of columns and store them in list of lists.
     """
     rows, columns = [int(x) for x in input().split(', ')]
 
     current_matrix = []
 
     for _ in range(rows):
-        lst = []
-        elements = deque(int(x) for x in input().split(', '))
-
-        for _ in range(columns):
-            lst.append(elements.popleft())
-
-        current_matrix.append(lst)
+        elements = [int(x) for x in input().split(', ')]
+        current_matrix.append(elements)
 
     return current_matrix
 
