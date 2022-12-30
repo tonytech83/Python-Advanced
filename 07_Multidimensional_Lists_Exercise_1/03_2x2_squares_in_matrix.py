@@ -7,7 +7,7 @@ def read_matrix(rows):
 
 def find_equal_squares(matrix, rows, cols):
     """
-    This function searches the number of all 2x2 squares containing identical chars in a matrix.
+    This function searches the number of all 2x2 squares containing identical chars in the matrix.
     """
     equal_square = 0
     for row_idx in range(rows - 1):
@@ -17,7 +17,8 @@ def find_equal_squares(matrix, rows, cols):
             char_3 = matrix[row_idx + 1][col_idx]
             char_4 = matrix[row_idx + 1][col_idx + 1]
 
-            if char_1 == char_2 and char_1 == char_3 and char_1 == char_4:
+            # check if all chars are identical
+            if char_1 == char_2 == char_3 == char_4:
                 equal_square += 1
 
     return equal_square
