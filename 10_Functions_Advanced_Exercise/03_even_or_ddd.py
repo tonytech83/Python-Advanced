@@ -1,5 +1,7 @@
 def even_odd(*args):
-    if args[-1] == 'odd':
+    filter_command = args[-1]
+
+    if filter_command == 'odd':
         return [x for x in args[:-1] if x % 2 != 0]
     else:
         return [x for x in args[:-1] if x % 2 == 0]
