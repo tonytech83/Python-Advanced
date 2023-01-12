@@ -3,26 +3,17 @@ stack = []
 
 queries_count = int(input())
 
+query_map = {
+    1: lambda x: stack.append(x[1]),
+    2: lambda x: stack.pop() if stack else None,
+    3: lambda x: print(max(stack)) if stack else None,
+    4: lambda x: print(min(stack)) if stack else None,
+}
+
 for _ in range(queries_count):
-    query = [int(x) for x in input().split()]
-    command = query[0]
+    query = [int(el) for el in input().split()]
+    query_map[query[0]](query)
 
-    if command == 1:
-        number_to_add = query[1]
-        stack.append(number_to_add)
+stack.reverse()
 
-    elif stack:
-        if command == 2:
-            stack.pop()
-
-        elif command == 3:
-            print(max(stack))
-
-        else:  # command == 4
-            print(min(stack))
-
-reversed_stack = []
-while stack:
-    reversed_stack.append(stack.pop())
-
-print(*reversed_stack, sep=', ')
+print(*stack, sep=', ')
