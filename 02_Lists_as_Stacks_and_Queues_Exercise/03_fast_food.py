@@ -18,6 +18,5 @@ while orders_queue:
         orders_queue.appendleft(current_order)
         print(f'Orders left: {" ".join(str(x) for x in orders_queue)}')
         break
-
-if not orders_queue:
+else:
     print('Orders complete')
