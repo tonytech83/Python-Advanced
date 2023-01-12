@@ -35,8 +35,6 @@ while not crash_happen:
         waiting_cars.append(line)
 
 if not crash_happen:
-    print('Everyone is safe.')
-    print(f'{cars_passed} total cars passed the crossroads.')
+    print(f'Everyone is safe.\n{cars_passed} total cars passed the crossroads.')
 else:
-    print('A crash happened!')
-    print(f'{crashed_car} was hit at {hit}.')
+    print(f'A crash happened!\n{crashed_car} was hit at {hit}.')
