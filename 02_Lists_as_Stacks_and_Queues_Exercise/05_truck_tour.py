@@ -2,12 +2,8 @@ from collections import deque
 
 petrol_pumps = int(input())
 
-circle_road = deque()
+circle_road = deque([int(x) for x in input().split()] for _ in range(petrol_pumps))
 visited_pump = 0
-
-for _ in range(petrol_pumps):
-    liters, distance = input().split()
-    circle_road.append([int(liters), int(distance)])
 
 for attempt in range(petrol_pumps):
     truck_tank = 0
