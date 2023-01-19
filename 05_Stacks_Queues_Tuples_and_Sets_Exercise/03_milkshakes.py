@@ -9,14 +9,9 @@ def output():
         print('Great! You made all the chocolate milkshakes needed!')
     else:
         print('Not enough milkshakes.')
-    if chocolates:
-        print(f'Chocolate: {", ".join(map(str, chocolates))}')
-    else:
-        print('Chocolate: empty')
-    if milk_cups:
-        print(f'Milk: {", ".join(map(str, milk_cups))}')
-    else:
-        print('Milk: empty')
+
+    print(f'Chocolate: {", ".join(map(str, chocolates)) or "empty"}')
+    print(f'Milk: {", ".join(map(str, milk_cups)) or "empty"}')
 
 
 # read chocolates input in stack
