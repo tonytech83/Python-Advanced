@@ -19,8 +19,9 @@ def output():
         print('Milk: empty')
 
 
-# read input in stack
+# read chocolates input in stack
 chocolates = [int(x) for x in input().split(', ')]
+# read milk cups input in queue
 milk_cups = deque(int(x) for x in input().split(', '))
 
 milkshakes = 0
