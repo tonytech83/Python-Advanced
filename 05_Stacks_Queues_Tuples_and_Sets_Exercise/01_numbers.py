@@ -2,8 +2,8 @@ def add_number(data):
     global first
     global second
 
-    where = data[1]
-    new_numbers = set(int(x) for x in data[2:])
+    where = data[0]
+    new_numbers = set(int(x) for x in data[1:])
 
     if where == 'First':
         first = first.union(new_numbers)
@@ -15,8 +15,8 @@ def remove_number(data):
     global first
     global second
 
-    where = data[1]
-    remove_numbers = set(int(x) for x in data[2:])
+    where = data[0]
+    remove_numbers = set(int(x) for x in data[1:])
 
     if where == "First":
         first = first.difference(remove_numbers)
@@ -36,14 +36,13 @@ second = set(int(x) for x in input().split())
 n = int(input())
 
 for _ in range(n):
-    command = input().split()
-    event = command[0]
+    event, *data = input().split()
 
     if event == 'Add':
-        add_number(command)
+        add_number(data)
 
     elif event == 'Remove':
-        remove_number(command)
+        remove_number(data)
 
     elif event == 'Check':
         print(check_subset())
