@@ -1,8 +1,8 @@
 def read_matrix(rows):
     """
-    This func receives number of rows and reads from console rows separated by whitespace.
+    This func receives number of rows and reads from console elements separated by whitespace.
     """
-    return [[x for x in input().split()] for _ in range(rows)]
+    return [input().split() for _ in range(rows)]
 
 
 def find_equal_squares(matrix, rows, cols):
@@ -12,13 +12,13 @@ def find_equal_squares(matrix, rows, cols):
     equal_square = 0
     for row_idx in range(rows - 1):
         for col_idx in range(cols - 1):
-            char_1 = matrix[row_idx][col_idx]
-            char_2 = matrix[row_idx][col_idx + 1]
-            char_3 = matrix[row_idx + 1][col_idx]
-            char_4 = matrix[row_idx + 1][col_idx + 1]
+            symbol = matrix[row_idx][col_idx]
+            symbol_right = matrix[row_idx][col_idx + 1]
+            symbol_down = matrix[row_idx + 1][col_idx]
+            symbol_right_down = matrix[row_idx + 1][col_idx + 1]
 
             # check if all chars are identical
-            if char_1 == char_2 == char_3 == char_4:
+            if symbol == symbol_right == symbol_down == symbol_right_down:
                 equal_square += 1
 
     return equal_square
