@@ -9,7 +9,7 @@ def valid_indexes(indexes):
     """
     Checks if coordinates are digits and are inside matrix.
     """
-    if set(indexes[:2]).issubset(valid_rows) and set(indexes[2:]).issubset(valid_cols):
+    if {indexes[0], indexes[2]}.issubset(valid_rows) and {indexes[1], indexes[3]}.issubset(valid_cols):
         return True
 
     return False
@@ -17,7 +17,7 @@ def valid_indexes(indexes):
 
 def valid_format(indexes):
     """
-    Check if command is in valid format (contains 5 elements).
+    Check if receive 4 indexes.
     """
     if len(indexes) == 4:
         return True
@@ -27,8 +27,8 @@ def valid_format(indexes):
 
 rows, columns = [int(x) for x in input().split()]
 matrix = read_matrix(rows)
-valid_rows = range(rows + 1)
-valid_cols = range(columns + 1)
+valid_rows = range(rows)
+valid_cols = range(columns)
 
 while True:
     event, *data = [int(x) if x.isdigit() else x for x in input().split()]
