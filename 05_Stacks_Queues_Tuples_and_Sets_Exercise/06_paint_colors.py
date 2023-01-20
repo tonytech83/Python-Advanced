@@ -7,9 +7,9 @@ main_colors = {'red', 'yellow', 'blue'}
 
 # create dict to store secondary colors and their ingredients
 secondary_colors = {
-    'orange': ['red', 'yellow'],
-    'purple': ['red', 'blue'],
-    'green': ['yellow', 'blue']
+    'orange': {'red', 'yellow'},
+    'purple': {'red', 'blue'},
+    'green': {'yellow', 'blue'}
 }
 
 formed_colors = []
@@ -27,22 +27,16 @@ while string:
         formed_colors.append(color)
     else:
         middle = len(string) // 2
-        string.insert(middle, first[:-1])
-        string.insert(middle, last[:-1])
-        string = deque(x for x in string if x)
+        for el in (first[:-1], last[:-1]):
+            if el:
+                string.insert(middle, el)
 
 result = []
 
-for color in formed_colors:
-    if color in main_colors:
-        result.append(color)
-    else:
-        is_collected = True
-        for former_color in secondary_colors[color]:
-            if former_color not in formed_colors:
-                is_collected = False
-                break
-        if is_collected:
-            result.append(color)
+# takes only secondary colors which have in formed colors and checks
+# if the value (set) of this color is subset of formed colors (have needed colors to create secondary color).
+for color in set(secondary_colors.keys()).intersection(formed_colors):
+    if not secondary_colors[color].issubset(formed_colors):
+        formed_colors.remove(color)
 
-print(result)
+print(formed_colors)
