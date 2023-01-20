@@ -42,20 +42,12 @@ for bomb in bombs_coordinates:
     # bomb explodes and deals damage equal to its integer value to all cells
     # around it (in every direction and in all diagonals)
     for row_idx in range(start_row, end_row):
-        for col_dx in range(start_col, end_col):
-            if matrix[row_idx][col_dx] > 0:
-                matrix[row_idx][col_dx] -= bomb_power
+        for col_idx in range(start_col, end_col):
+            matrix[row_idx][col_idx] -= bomb_power if matrix[row_idx][col_idx] > 0 else 0
 
-alive_cells = 0
-sum_of_cells = 0
+alive_cells = [num for row in matrix for num in row if num > 0]
+sum_of_cells = sum(alive_cells)
 
-for row in matrix:
-    for num in row:
-        if num > 0:
-            alive_cells += 1
-            sum_of_cells += num
-
-print(f'Alive cells: {alive_cells}')
+print(f'Alive cells: {len(alive_cells)}')
 print(f'Sum: {sum_of_cells}')
-for row in matrix:
-    print(*row, sep=' ')
+[print(*row, sep=' ') for row in matrix]
