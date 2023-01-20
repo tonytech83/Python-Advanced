@@ -12,11 +12,8 @@ def find_diagonals(matrix):
     """
     rows = len(matrix)
 
-    primary = []
-    secondary = []
-    for idx in range(rows):
-        primary.append(matrix[idx][idx])
-        secondary.append(matrix[idx][rows - idx - 1])
+    primary = [matrix[idx][idx] for idx in range(rows)]
+    secondary = [matrix[idx][rows - idx - 1] for idx in range(rows)]
 
     return primary, secondary
 
