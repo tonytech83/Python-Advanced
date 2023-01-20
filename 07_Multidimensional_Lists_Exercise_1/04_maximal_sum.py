@@ -12,30 +12,29 @@ def maximal_sum(matrix, rows, cols):
     """
     This func searches 3x3 submatrix with max sum of elements.
     """
-    max_sum = -sys.maxsize
-    max_submatrix_start = 0
-    for row in range(rows - 2):
-        for col in range(cols - 2):
-            current_sum = matrix[row][col] + matrix[row][col + 1] + matrix[row][col + 2] + \
-                          matrix[row + 1][col] + matrix[row + 1][col + 1] + matrix[row + 1][col + 2] + \
-                          matrix[row + 2][col] + matrix[row + 2][col + 1] + matrix[row + 2][col + 2]
+    current_max_sum = -sys.maxsize
+    biggest_submatrix = 0
+    for row_idx in range(rows - 2):
+        for col_idx in range(cols - 2):
+            first_row = matrix[row_idx][col_idx:col_idx + 3]
+            second_row = matrix[row_idx + 1][col_idx:col_idx + 3]
+            third_row = matrix[row_idx + 2][col_idx:col_idx + 3]
 
-            if current_sum > max_sum:
-                max_sum = current_sum
-                max_submatrix_start = (row, col)
+            current_sum = sum(first_row) + sum(second_row) + sum(third_row)
 
-    return max_sum, max_submatrix_start
+            if current_sum > current_max_sum:
+                current_max_sum = current_sum
+                biggest_submatrix = [first_row, second_row, third_row]
+
+    return current_max_sum, biggest_submatrix
 
 
 # read rows and columns from console
 rows, columns = [int(x) for x in input().split()]
 matrix = read_matrix(rows)
 
-max_sum, max_submatrix_start = maximal_sum(matrix, rows, columns)
+max_sum, biggest_matrix = maximal_sum(matrix, rows, columns)
+
 print(f'Sum = {max_sum}')
-start_row = max_submatrix_start[0]
-start_col = max_submatrix_start[1]
-for row in range(3):
-    for col in range(3):
-        print(matrix[start_row + row][start_col + col], end=' ')
-    print()
+for row in biggest_matrix:
+    print(*row, sep=' ')
