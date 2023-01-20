@@ -112,8 +112,8 @@ while commands:
     if is_winner or is_death:
         break
 
-for row in lair:
-    print(*row, sep='')
+[print(*row, sep='') for row in lair]
+
 if is_winner:
     print(f'won: {p_row_idx} {p_col_idx}')
 else:
