@@ -11,12 +11,12 @@ def find_stat():
                 return row_idx, col_idx
 
 
-def move(start_row, start_col, direction, matrix):
+def move(start_row: int, start_col: int, direction: str, matrix: list):
     """
-    Make move regarding received direction. This func returns new position after performed move.
+    This func returns new position after performed move relative to the obtained coordinates.
     """
     global game_over
-    global coal
+    global coals
 
     # dict with all coordinates according to received direction
     directions = {
@@ -29,12 +29,12 @@ def move(start_row, start_col, direction, matrix):
     row_idx, col_idx = directions[direction]
 
     # check if new coordinates are valid, if not returns start position
-    if (row_idx < 0 or row_idx > (len(matrix) - 1)) or (col_idx < 0 or col_idx > (len(matrix) - 1)):
+    if row_idx not in range(size) or col_idx not in range(size):
         return start_row, start_col
 
     elif matrix[row_idx][col_idx] == 'c':
         matrix[row_idx][col_idx] = '*'
-        coal -= 1
+        coals -= 1
 
     elif matrix[row_idx][col_idx] == 'e':
         game_over = True
@@ -46,9 +46,8 @@ size = int(input())
 commands = deque(x for x in input().split())
 matrix = [[x for x in input().split()] for _ in range(size)]
 
-coal = 0
-for row in matrix:
-    coal += row.count('c')
+# take quantity af coals in our matrix
+coals = sum([row.count('c') for row in matrix])
 
 game_over = False
 start_row, start_col = find_stat()
@@ -63,9 +62,9 @@ while commands:
         print(f'Game over! ({start_row}, {start_col})')
         break
 
-    if coal == 0:
+    if coals == 0:
         print(f'You collected all coal! ({start_row}, {start_col})')
         break
 
-if coal > 0 and not game_over:
-    print(f'{coal} pieces of coal left. ({start_row}, {start_col})')
+if coals > 0 and not game_over:
+    print(f'{coals} pieces of coal left. ({start_row}, {start_col})')
