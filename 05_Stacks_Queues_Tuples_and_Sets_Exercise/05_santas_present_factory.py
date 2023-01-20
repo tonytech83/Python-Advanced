@@ -6,12 +6,11 @@ def presents_pair():
     This function checks if manage to craft either one of the pairs:
     - a doll and a train
     - a teddy bear and a bicycle
-    :returns: boolean
+    :returns: message
     """
-    if ('Doll' in crafted_toys and 'Wooden train' in crafted_toys) or \
-            ('Teddy bear' in crafted_toys and 'Bicycle' in crafted_toys):
-        return True
-    return False
+    if {'Doll', 'Wooden train'}.issubset(crafted_toys) or {'Teddy bear', 'Bicycle'}.issubset(crafted_toys):
+        return 'The presents are crafted! Merry Christmas!'
+    return 'No presents this Christmas!'
 
 
 # read materials from console input in stack
@@ -67,10 +66,7 @@ while material_boxes and magic_values:
         material_boxes.append(material + 15)
 
 # On the first line - print whether you've succeeded in crafting the presents:
-if presents_pair():
-    print('The presents are crafted! Merry Christmas!')
-else:
-    print('No presents this Christmas!')
+print(presents_pair())
 
 # On the next two lines print the materials and magic that are left, if there are any (otherwise skip the line)
 if material_boxes:
@@ -79,5 +75,4 @@ if magic_values:
     print(f'Magic left: {", ".join(map(str, magic_values))}')
 
 # On the next lines print the presents you have crafted, ordered alphabetically
-for toy, count in sorted(crafted_toys.items()):
-    print(f'{toy}: {count}')
+[print(f'{toy}: {count}') for toy, count in sorted(crafted_toys.items())]
