@@ -15,9 +15,7 @@ def read_matrix():
 
 matrix = read_matrix()
 
-sum_matrix_elements = 0
-for row in matrix:
-    sum_matrix_elements += sum(row)
+matrix_elements_sum = sum([sum(row) for row in matrix])
 
-print(sum_matrix_elements)
+print(matrix_elements_sum)
 print(matrix)
