@@ -8,21 +8,22 @@ def is_inside(row_idx, col_idx):
 size = int(input())
 
 matrix = [[int(x) for x in input().split()] for _ in range(size)]
+COMMAND_END = 'END'
+COMMAND_ADD = 'Add'
+COMMAND_SUB = 'Subtract'
 
 while True:
     command = input().split()
-    if command[0] == 'END':
+    if command[0] == COMMAND_END:
         break
 
-    row, col, value = [int(x) for x in command[1:]]
+    event, row, col, value = [int(x) if x.isdigit() else x for x in command]
 
-    if is_inside(row, col):
-        if command[0] == 'Add':
-            matrix[row][col] += value
-        else:
-            matrix[row][col] -= value
-    else:
+    if not is_inside(row, col):
         print('Invalid coordinates')
+    elif event == COMMAND_ADD:
+        matrix[row][col] += value
+    elif event == COMMAND_SUB:
+        matrix[row][col] -= value
 
-for row in matrix:
-    print(*row, sep=' ')
+[print(*row, sep=' ') for row in matrix]
