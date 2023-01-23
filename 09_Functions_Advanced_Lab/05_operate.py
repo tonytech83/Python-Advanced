@@ -1,23 +1,18 @@
+from functools import reduce
+
+
 def operate(sign, *args):
     def add(*args):
-        return sum(x for x in args)
+        return reduce(lambda x, y: x + y, args)
 
-    def subtract(x, *args):
-        return x + sum(-y for y in args)
+    def subtract(*args):
+        return reduce(lambda x, y: x - y, args)
 
     def multiply(*args):
-        result = 1
-        for num in args:
-            result *= num
+        return reduce(lambda x, y: x * y, args)
 
-        return result
-
-    def divide(x, *args):
-        result = x
-        for num in args:
-            result /= num
-
-        return result
+    def divide(*args):
+        return reduce(lambda x, y: x / y, args)
 
     operations_map = {
         '+': add,
@@ -33,3 +28,8 @@ print(operate("+", 1, 2, 3))
 print(operate("*", 3, 4))
 print(operate('-', 2, 3, 3))
 print(operate('/', 3, 4))
+
+
+# Solution with reduce and eval
+# def operate(sign, *args):
+#     return reduce(lambda x, y: eval(f'{x} {sign} {y}'), args)
