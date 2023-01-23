@@ -42,28 +42,36 @@ def move(row_idx, col_idx, direction):
 
 
 def output():
+    """
+    This func prints requested result.
+    """
     if collected_bags >= 10:
         print('She did it! She went to the party.')
     else:
         print("Alice didn't make it to the tea party.")
 
-    for row in wonderland:
-        print(*row, sep=' ')
+    [print(*row, sep=' ') for row in wonderland]
+
+
+def read_wonderland():
+    """
+    Reads matrix from console and finds coordinates of Alice
+    """
+    matrix = []
+    a_row = 0
+    a_col = 0
+    for row in range(size):
+        row_elements = input().split()
+        for col in range(size):
+            if row_elements[col] == 'A':
+                a_row = row
+                a_col = col
+        matrix.append(row_elements)
+    return matrix, a_row, a_col
 
 
 size = int(input())
-wonderland = []
-alice_row = 0
-alice_col = 0
-
-for row in range(size):
-    row_elements = input().split()
-    for col in range(size):
-        if row_elements[col] == 'A':
-            alice_row = row
-            alice_col = col
-    wonderland.append(row_elements)
-
+wonderland, alice_row, alice_col = read_wonderland()
 collected_bags = 0
 dead_end = False
 wonderland[alice_row][alice_col] = '*'
