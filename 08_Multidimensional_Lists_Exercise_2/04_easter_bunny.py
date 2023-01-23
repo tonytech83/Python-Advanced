@@ -35,8 +35,10 @@ def move(row, col, direction):
 
     while not outside_or_x(next_row, next_col):
         paths[direction].append([next_row, next_col])
+
         if direction not in eggs:
             eggs[direction] = 0
+
         eggs[direction] += int(matrix[next_row][next_col])
         next_row, next_col = directions[direction](next_row, next_col)
 
@@ -49,9 +51,9 @@ def output():
     •	The total number of eggs collected
     """
     max_path_value = max(eggs, key=eggs.get)
+
     print(max_path_value)
-    for point in paths[max_path_value]:
-        print(point)
+    [print(point) for point in paths[max_path_value]]
     print(eggs[max_path_value])
 
 
