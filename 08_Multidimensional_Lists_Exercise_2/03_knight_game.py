@@ -1,11 +1,11 @@
-def inside(row_idx, col_idx):
+def inside(row_idx: int, col_idx: int):
     """
     This function check if move is inside board(matrix).
     """
     return row_idx in range(size) and col_idx in range(size)
 
 
-def remove_knight(max_key):
+def remove_knight(max_key: str):
     """
     This func removes knight with most hits
     """
@@ -28,24 +28,27 @@ def check_hits():
 
     for row in range(size):
         for col in range(size):
-            possible_moves = [
-                [row - 1, col - 2],
-                [row - 2, col - 1],
-                [row - 2, col + 1],
-                [row - 1, col + 2],
-                [row + 1, col + 2],
-                [row + 2, col + 1],
-                [row + 2, col - 1],
-                [row + 1, col - 2]
-            ]
+            # all possible moves of knight in chess
+            possible_moves = (
+                (row - 1, col - 2),
+                (row - 2, col - 1),
+                (row - 2, col + 1),
+                (row - 1, col + 2),
+                (row + 1, col + 2),
+                (row + 2, col + 1),
+                (row + 2, col - 1),
+                (row + 1, col - 2)
+            )
 
             hits = 0
             if board[row][col] == 'K':
                 for child_row, child_col in possible_moves:
                     if inside(child_row, child_col) and board[child_row][child_col] == 'K':
                         hits += 1
+
             if hits > 0:
                 knights_hits[f'{row} {col}'] = hits
+
     if knights_hits:
         key_of_max_value = max(knights_hits, key=knights_hits.get)
         remove_knight(key_of_max_value)
