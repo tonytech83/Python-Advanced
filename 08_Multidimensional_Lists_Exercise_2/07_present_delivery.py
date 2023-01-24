@@ -61,8 +61,8 @@ while gifts > 0:
 
 if gifts <= 0 < count_nice_kids:
     print('Santa ran out of presents!')
-for row in neighborhood:
-    print(*row, sep=' ')
+
+[print(*row, sep=' ') for row in neighborhood]
 
 if count_nice_kids == 0:
     print(f'Good job, Santa! {gifts_given} happy nice kid/s.')
