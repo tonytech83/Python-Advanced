@@ -1,4 +1,7 @@
 def find_positive_and_negative_sums(*args):
+    """
+    This func returns sums of positive and negative numbers.
+    """
     p_sum = sum(x for x in args if x > 0)
     n_sum = -sum(-x for x in args if x < 0)
     return p_sum, n_sum
