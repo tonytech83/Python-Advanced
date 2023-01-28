@@ -4,6 +4,7 @@ def read_battlefield():
     """
     size = int(input())
     matrix = []
+    coordinates = ()
 
     for row in range(size):
         matrix.append([x for x in input()])
