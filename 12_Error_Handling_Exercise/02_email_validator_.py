@@ -34,6 +34,7 @@ def checks_at_symbol(email: str):
         raise MustContainAtSymbolError('Email must contain @')
     elif email.count('@') > 1:
         raise MoreThanOneAtSymbolError('Email should contain single @ symbol')
+    return email.split('@')
 
 
 def domain_validation(domain: str):
@@ -58,7 +59,7 @@ def name_validation(name: str):
 
 def main():
     """
-    This function loops through the submitted emails in the console until "Eнд" command is received.
+    This function loops through the submitted emails in the console until "End" command is received.
     """
     while True:
         current_email = input()
@@ -66,9 +67,8 @@ def main():
         if current_email == 'End':
             break
 
-        checks_at_symbol(current_email)
+        current_name, current_domain = checks_at_symbol(current_email)
 
-        current_name, current_domain = current_email.split('@')
         name_validation(current_name)
 
         domain_validation(current_domain)
