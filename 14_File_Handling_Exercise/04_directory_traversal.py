@@ -26,7 +26,7 @@ def create_report(extensions: dict):
         for extension, files in sorted(extensions.items()):
             f.write(f'.{extension}\n')
             for file in sorted(files):
-                f.write(f'- - - {file}.{extension}\n')
+                f.write(f'- - - {file}\n')
 
 
 directory = input()
