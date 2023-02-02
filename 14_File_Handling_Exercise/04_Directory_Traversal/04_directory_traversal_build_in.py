@@ -3,7 +3,7 @@ from os import walk
 start_path = input()
 files_by_ext = {}
 
-# uses build-in walk instead of recursion
+# using build-in walk instead of recursion
 for _, _, files in walk(start_path):
     for file in files:
         extension = file.split('.')[-1]
