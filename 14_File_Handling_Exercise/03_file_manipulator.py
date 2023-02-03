@@ -6,7 +6,7 @@ def create_file(*args):
     This func creates empty file.
     """
     file_name = args[0]
-    open(file_name, 'w').close()
+    open(os.path.join(f'files/', file_name), 'w').close()
 
 
 def add_to_file(*args):
@@ -15,7 +15,7 @@ def add_to_file(*args):
     """
     file_name, content = args
 
-    with open(file_name, 'a') as file:
+    with open(os.path.join(f'files/', file_name), 'a') as file:
         file.write(f'{content}\n')
 
 
@@ -26,7 +26,7 @@ def replace_string(*args):
     file_name, old_string, new_string = args
 
     try:
-        with open(file_name, 'r+') as file:
+        with open(os.path.join(f'files/', file_name), 'r+') as file:
             new_file_content = file.read().replace(old_string, new_string)
             file.seek(0)
             file.truncate()
@@ -42,7 +42,7 @@ def delete_file(*args):
     file_name = args[0]
 
     try:
-        os.remove(file_name)
+        os.remove(os.path.join(f'files/',file_name))
     except FileNotFoundError:
         print('An error occurred')
 
