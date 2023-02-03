@@ -22,7 +22,7 @@ def create_report(extensions: dict):
     """
     This func writes information about each file form extensions dict in report.txt
     """
-    with open('report.txt', 'w') as f:
+    with open('files/report.txt', 'w') as f:
         for extension, files in sorted(extensions.items()):
             f.write(f'.{extension}\n')
             for file in sorted(files):

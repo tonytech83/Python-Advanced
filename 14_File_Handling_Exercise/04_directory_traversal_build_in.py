@@ -11,7 +11,7 @@ for _, _, files in walk(start_path):
             files_by_ext[extension] = []
         files_by_ext[extension].append(file)
 
-with open('report.txt', 'w') as f:
+with open('files/report.txt', 'w') as f:
     for ext, files in sorted(files_by_ext.items()):
         f.write(f'.{ext}\n')
         for file in sorted(files):
