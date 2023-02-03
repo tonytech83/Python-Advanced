@@ -1,8 +1,8 @@
 import re
 from string import punctuation
 
-input_path = 'text.txt'
-output_path = 'output.txt'
+input_path = '02_Line_Numbers/text.txt'
+output_path = 'files/output.txt'
 
 with open(input_path, 'r') as input_file, open(output_path, 'w') as output_file:
     for idx, line in enumerate(input_file):
