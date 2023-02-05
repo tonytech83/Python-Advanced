@@ -91,6 +91,7 @@ def check_primary_diagonal(row: int, col: int, current_player: int, winning_coun
     """
     Checks primary diagonal from marked cell for current player number.
     """
+    # TODO -> same as horizontal
     left_up = [check_for_player_num(row - idx, col - idx, current_player) for idx in range(winning_count)].count(True)
     right_down = [check_for_player_num(row + idx, col + idx, current_player) for idx in range(winning_count)].count(
         True)
@@ -102,6 +103,7 @@ def check_secondary_diagonal(row: int, col: int, current_player: int, winning_co
     """
     Checks secondary diagonal from marked cell for current player number.
     """
+    # TODO -> same as horizontal
     right_up = [check_for_player_num(row - idx, col + idx, current_player) for idx in range(winning_count)].count(True)
     left_down = [check_for_player_num(row + idx, col - idx, current_player) for idx in range(winning_count)].count(True)
 
