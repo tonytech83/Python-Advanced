@@ -46,6 +46,7 @@ def domain_validation(domain: str):
     for valid_domain in valid_domains:
         if domain.endswith(valid_domain):
             break
+    else:
         raise InvalidDomainError(f'Domain must be one of the following: {", ".join(valid_domains)}')
 
 
