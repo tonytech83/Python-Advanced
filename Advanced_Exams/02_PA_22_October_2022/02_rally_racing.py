@@ -35,6 +35,16 @@ def move_car(coordinates: tuple, direction: str):
     return directions[direction]
 
 
+def output():
+    if not is_disqualified:
+        print(f'Racing car {racing_car} finished the stage!')
+    else:
+        print(f'Racing car {racing_car} DNF.')
+
+    print(f'Distance covered {covered_distance} km.')
+    [print(*row, sep='') for row in race]
+
+
 size = int(input())
 racing_car = input()
 race, tunnels = read_race()
@@ -72,10 +82,4 @@ while True:
     race[car_row][car_col] = CAR
     coordinates = (car_row, car_col)
 
-if not is_disqualified:
-    print(f'Racing car {racing_car} finished the stage!')
-else:
-    print(f'Racing car {racing_car} DNF.')
-
-print(f'Distance covered {covered_distance} km.')
-[print(*row, sep='') for row in race]
+output()
