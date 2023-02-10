@@ -108,8 +108,7 @@ def pawn_move(coordinates, pawn_color):
 
 chessboard, white, black = read_chessboard()
 
-capture = False
-queen = False
+capture, queen = False, False
 WHITE_PAWN = 'w'
 BLACK_PAWN = 'b'
 EMPTY_POSITION = '-'
