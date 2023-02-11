@@ -6,6 +6,9 @@ from helpers import clean_screen, get_password_hash
 
 
 def get_users_data():
+    """
+    This func takes users data from users_information.txt (where we are storing registered users).
+    """
     info_data = []
 
     with open("db/users_information.txt", "r") as users_file:
@@ -16,6 +19,9 @@ def get_users_data():
 
 
 def render_entry():
+    """
+    This func rendering initial looks of gui app.
+    """
     register_btn = Button(
         root,
         text="Register",
@@ -43,6 +49,9 @@ def render_entry():
 
 
 def login():
+    """
+    This func rendering login for gui app.
+    """
     clean_screen()
 
     frame.create_text(100, 50, text="Username:")
@@ -55,6 +64,9 @@ def login():
 
 
 def logging():
+    """
+    Handle the login process, returns message if credentials are not in users_information.txt
+    """
     if check_logging():
         display_products()
     else:
@@ -62,6 +74,9 @@ def logging():
 
 
 def check_logging():
+    """
+    Validates received login credentials with data in users_information.txt.
+    """
     info_data = get_users_data()
 
     user_username = username_box.get()
@@ -78,6 +93,9 @@ def check_logging():
 
 
 def register():
+    """
+    This func rendering register for gui app.
+    """
     clean_screen()
 
     frame.create_text(100, 50, text="First name:")
@@ -102,6 +120,9 @@ def register():
 
 
 def registration():
+    """
+    Takes data form user input and creates user in users_information.txt if user not exist.
+    """
     info_dict = {
         "first_name": first_name_box.get(),
         "last_name": last_name_box.get(),
@@ -117,6 +138,9 @@ def registration():
 
 
 def check_registration(info):
+    """
+    This func checks if all information provided by user are valid.
+    """
     for el in info.values():
         if not el.strip():
             frame.create_text(
@@ -151,6 +175,9 @@ def check_registration(info):
 
 
 def check_if_login_is_fulfilled(event):
+    """
+    This func checks are all fields are fulfilled for login process.
+    """
     info = {
         "username": username_box.get(),
         "password": password_box.get(),

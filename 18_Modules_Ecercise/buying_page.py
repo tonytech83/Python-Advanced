@@ -6,11 +6,17 @@ from helpers import clean_screen
 
 
 def display_products():
+    """
+    This func handle refresh of products window (when buying stock).
+    """
     clean_screen()
     display_stock()
 
 
 def display_stock():
+    """
+    This func display stocks.
+    """
     global info
 
     with open("db/products_data.json", "r") as stock:
@@ -54,6 +60,9 @@ def display_stock():
 
 
 def buy_product(product):
+    """
+    When buy button is clicked decrease the quantity of stock.
+    """
     info[product]["quantity"] -= 1
 
     with open("db/products_data.json", "w") as stock:
