@@ -40,16 +40,16 @@ SUBMARINE = 'S'
 
 submarine_row, submarine_col = submarine_coordinates
 
-while battle_cruisers > 0:
+while battle_cruisers:
     # received from console direction
     direction = input()
+
     # mark old position of submarine as EMPTY_FIELD
     battlefield[submarine_row][submarine_col] = EMPTY_FIELD
 
     submarine_row, submarine_col = submarine_move(submarine_row, submarine_col, direction)
 
     if battlefield[submarine_row][submarine_col] == MINE:
-        battlefield[submarine_row][submarine_col] = EMPTY_FIELD
         blown_mines += 1
 
     elif battlefield[submarine_row][submarine_col] == CRUISER:
