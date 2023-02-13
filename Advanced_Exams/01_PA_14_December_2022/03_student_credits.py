@@ -1,10 +1,9 @@
-def students_credits(*args):
+def students_credits(*args, total_credits=240):
     """
     This func calculates student point and returns if he pass or not based on total_points.
     """
     courses = {}
     final_credits = 0
-    total_credits = 240
 
     for line in args:
         # separate the info in variables
