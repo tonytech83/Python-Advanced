@@ -3,7 +3,7 @@ def students_credits(*args, total_credits=240):
     This func calculates student point and returns if he pass or not based on total_points.
     """
     courses = {}
-    final_credits = 0
+    final_output = []
 
     for line in args:
         # separate the info in variables
@@ -15,10 +15,9 @@ def students_credits(*args, total_credits=240):
         student_credits = course_credits * test_percentage
 
         # add the course result to total points of student and keep the course and points for course.
-        final_credits += student_credits
         courses[course_name] = student_credits
 
-    final_output = []
+    final_credits = sum(courses.values())
 
     if final_credits >= total_credits:
         final_output.append(f'Diyan gets a diploma with {final_credits:.1f} credits.')
