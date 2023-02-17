@@ -1,3 +1,7 @@
+# Exam: 02. Minesweeper Generator
+# From: Python Advanced Retake Exam - 19 August 2020
+# URL: https://judge.softuni.org/Contests/Practice/Index/2463#1
+
 from collections import deque
 
 
