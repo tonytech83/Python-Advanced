@@ -27,7 +27,7 @@ In this repository there are solutions to tasks from the programming Advanced co
 - [Error handling](https://github.com/tonytech83/Python-Advanced/tree/main/11_Error_Handling_Lab)
 - [File Handling](https://github.com/tonytech83/Python-Advanced/tree/main/13_File_Handling_Lab)
 - [Workshop](https://github.com/tonytech83/Python-Advanced/tree/main/15_Workshop_Lab)
-- [Modules](https://github.com/tonytech83/Python-Advanced/tree/main/17_Modules)
+- [Modules](https://github.com/tonytech83/Python-Advanced/tree/main/17_Modules_Lab)
 
 <br/>
 <br/>
