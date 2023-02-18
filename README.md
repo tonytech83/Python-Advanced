@@ -25,6 +25,9 @@ In this repository there are solutions to tasks from the programming Advanced co
 - [Multidimensional lists](https://github.com/tonytech83/Python-Advanced/tree/main/06_Multidimensional_Lists_Lab)
 - [Function advanced](https://github.com/tonytech83/Python-Advanced/tree/main/09_Functions_Advanced_Lab)
 - [Error handling](https://github.com/tonytech83/Python-Advanced/tree/main/11_Error_Handling_Lab)
+- [File Handling](https://github.com/tonytech83/Python-Advanced/tree/main/13_File_Handling_Lab)
+- [Workshop](https://github.com/tonytech83/Python-Advanced/tree/main/15_Workshop_Lab)
+- [Modules](https://github.com/tonytech83/Python-Advanced/tree/main/17_Modules)
 
 <br/>
 <br/>
