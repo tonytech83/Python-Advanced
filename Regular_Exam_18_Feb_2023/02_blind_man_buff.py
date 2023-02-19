@@ -5,8 +5,7 @@ def create_playground():
     for row in range(rows):
         matrix.append(input().split())
         if PLAYER in matrix[row]:
-            player_coordinates.append(row)
-            player_coordinates.append(matrix[row].index(PLAYER))
+            player_coordinates = [row, matrix[row].index(PLAYER)]
 
     return matrix, player_coordinates
 
