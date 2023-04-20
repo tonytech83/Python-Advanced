@@ -14,10 +14,11 @@ def math_operations(*args, **kwargs):
     •	You must repeat the same steps consecutively until you run out of numbers
     """
     # define dict with all math operations
+
     operations = {
         'a': lambda a, b: a + b,
         's': lambda a, b: a - b,
-        'd': lambda a, b: a / b,
+        'd': lambda a, b: a / b if b != 0 else a,
         'm': lambda a, b: a * b,
     }
 
@@ -29,8 +30,6 @@ def math_operations(*args, **kwargs):
             if not numbers:
                 break
             number = numbers.popleft()
-            if key == 'd' and number == 0:
-                continue
             kwargs[key] = operations[key](kwargs[key], number)
 
     sorted_result = [f'{k}: {v:.1f}' for k, v in sorted(kwargs.items(), key=lambda kvp: (-kvp[1], kvp[0]))]
