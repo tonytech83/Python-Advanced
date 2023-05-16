@@ -1,3 +1,15 @@
+class Player:
+    def __init__(self, name: str, is_resting: bool):
+        self.name = name
+        self.is_resting = is_resting
+
+    def wake(self):
+        self.is_resting = False
+
+    def rest(self):
+        self.is_resting = True
+
+
 def read_maze():
     """
     Reads matrix from console
@@ -9,70 +21,33 @@ def read_maze():
     return new_maze
 
 
-def player_move(coordinates, player):
-    """
-    Moves player to received coordinates and change some of global boolean relative to the visited cell in maze.
-    """
-    global found_exit
-    global player_one_rest
-    global player_two_rest
-    global fall_in_trap
-
-    row, col = [int(x) for x in coordinates if x.isdigit()]
-
-    if maze[row][col] == EXIT:
-        found_exit = True
-
-    elif maze[row][col] == TRAP:
-        fall_in_trap = True
-
-    elif maze[row][col] == WALL:
-        if player == player_one:
-            player_one_rest = True
-        else:
-            player_two_rest = True
-
-
-player_one, player_two = input().split(', ')
 MAZE_SIZE = 6
-EXIT = 'E'
-TRAP = 'T'
-WALL = 'W'
+EXIT, TRAP, WALL, EMPTY = 'E', 'T', 'W', '.'
+player_names = input().split(', ')
 maze = read_maze()
 
-player_turn = 0
-player_one_rest = False
-player_two_rest = False
-found_exit = False
-fall_in_trap = False
+current_player = Player(player_names[0], False)
+next_player = Player(player_names[1], False)
 
 while True:
 
-    turn_coordinates = input()
-    player_turn += 1
+    row, col = [int(x) for x in input() if x.isdigit()]
 
-    if player_turn % 2 == 1:
-        player = player_one
-        if player_one_rest:
-            player_one_rest = False
-            continue
-    else:
-        player = player_two
-        if player_two_rest:
-            player_two_rest = False
-            continue
+    if current_player.is_resting:
+        current_player.wake()
+        current_player, next_player = next_player, current_player
+        continue
 
-    player_move(turn_coordinates, player)
-
-    if found_exit:
-        print(f'{player} found the Exit and wins the game!')
+    if maze[row][col] == EXIT:
+        print(f"{current_player.name} found the Exit and wins the game!")
         break
 
-    if player_one_rest and player == player_one:
-        print(f'{player} hits a wall and needs to rest.')
-    elif player_two_rest and player == player_two:
-        print(f'{player} hits a wall and needs to rest.')
-
-    if fall_in_trap:
-        print(f'{player} is out of the game! The winner is {player_two if player == player_one else player_one}.')
+    elif maze[row][col] == TRAP:
+        print(f"{current_player.name} is out of the game! The winner is {next_player.name}.")
         break
+
+    elif maze[row][col] == WALL:
+        print(f"{current_player.name} hits a wall and needs to rest.")
+        current_player.rest()
+
+    current_player, next_player = next_player, current_player
