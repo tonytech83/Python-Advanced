@@ -14,7 +14,7 @@ The Python Advanced course builds on Python language skills by exploring more co
 
 - `Python`
 
-## Judge System`
+## Judge System
 
 - [`Problem descriptiom and online judge system`](https://judge.softuni.org/Contests#!/List/ByCategory/196/Python-Advanced)
 
